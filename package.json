@@ -1,0 +1,67 @@
+{
+  "name": "@miniarray/vue-monorail",
+  "description": "Metro UI components for vue",
+  "version": "0.0.0-development",
+  "homepage": "https://github.com/miniArray/vue-monorail",
+  "main": "dist/components/index.js",
+  "module": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miniArray/vue-monorail.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {},
+  "scripts": {
+    "serve": "run-p serve:*",
+    "serve:styleguide": "vue-styleguidist server",
+    "build": "run-p build:*",
+    "build:styleguide": "vue-styleguidist build",
+    "build:components": "webpack",
+    "commit": "git cz",
+    "commit:all": "git add -A && npm run commit",
+    "lint": "eslint src/components/**",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "run-s test:*",
+    "test:unit": "jest --config test/unit/jest.conf.js --coverage",
+    "release": "semantic-release",
+    "deploy": "push-dir --dir=dist/guide --branch=gh-pages",
+    "dist": "npm run build:styleguide && npm run deploy"
+  },
+  "devDependencies": {
+    "babel-jest": "^21.0.2",
+    "commitizen": "^2.9.6",
+    "css-loader": "^0.28.7",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.18.2",
+    "eslint-plugin-vue": "^4.3.0",
+    "husky": "^0.15.0-rc.9",
+    "jest": "^22.0.4",
+    "jest-serializer-vue": "^0.3.0",
+    "metro4": "^4.0.8",
+    "npm-run-all": "^4.1.2",
+    "push-dir": "^0.4.1",
+    "sass-loader": "^6.0.6",
+    "semantic-release": "^15.0.3",
+    "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.2.3",
+    "validate-commit": "^3.4.0",
+    "vue-jest": "^1.0.2",
+    "vue-loader": "^13.5.0",
+    "vue-styleguidist": "1.4.8",
+    "webpack": "^3.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "npm run lint:fix"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

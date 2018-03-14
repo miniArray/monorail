@@ -27,7 +27,7 @@
     "test": "run-s test:*",
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "release": "semantic-release",
-    "deploy": "push-dir --dir=dist/guide --branch=gh-pages",
+    "deploy": "push-dir --dir=dist/guide --branch=gh-pages --force",
     "dist": "npm run build:styleguide && npm run deploy"
   },
   "devDependencies": {

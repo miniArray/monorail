@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      - NODE_ENV: development
     working_directory: ~/vue-monorail
     # The primary container is an instance of the first list image listed. Your build commands run in this container.
     docker:
@@ -20,6 +22,8 @@ jobs:
           paths:
             - node_modules
   test:
+    environment:
+      - NODE_ENV: development
     docker:
       - image: circleci/node:4.8.2
     steps:

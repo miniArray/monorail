@@ -1,10 +1,15 @@
 {
   "name": "@miniarray/vue-monorail",
   "description": "Metro UI components for vue",
-  "version": "0.0.0-development",
+  "private": false,
+  "version": "1.0.0",
   "homepage": "https://github.com/miniArray/vue-monorail",
   "main": "dist/components/index.js",
   "module": "src/index.js",
+  "files": [
+    "dist/components",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miniArray/vue-monorail.git"
@@ -22,16 +27,18 @@
     "build:components": "webpack",
     "commit": "git cz",
     "commit:all": "git add -A && npm run commit",
+    "commit:sync": "npm run commit:all && git push",
     "lint": "eslint src/components/**",
     "lint:fix": "npm run lint -- --fix",
     "test": "run-s test:*",
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "release": "semantic-release",
     "deploy": "node build/deploy.pre && push-dir --dir=dist/guide --branch=gh-pages --verbose; node build/deploy.post",
-    "dist": "npm run build:styleguide && npm run deploy"
+    "dist": "npm run build && npm run deploy"
   },
   "devDependencies": {
     "babel-jest": "^21.0.2",
+    "cross-env": "^5.1.4",
     "commitizen": "^2.9.6",
     "css-loader": "^0.28.7",
     "cz-conventional-changelog": "^2.1.0",

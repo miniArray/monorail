@@ -5,7 +5,7 @@ general:
      - master
      - /feature-.*/
 jobs:
-  test:
+  all:
     environment:
       - NODE_ENV: development
     docker:
@@ -33,12 +33,20 @@ jobs:
       - run:
           name: Coverage
           command: bash <(curl -s https://codecov.io/bash)
-
+      - run:
+          name: Build all
+          command: npm run build
+      - run:
+          name: release
+          command: npm run release || true
+      - run:
+          name: Deploy guide
+          command: npm run deploy
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - test:
+      - all:
           filters:
             branches:
               only: master

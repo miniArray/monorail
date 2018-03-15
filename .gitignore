@@ -67,3 +67,4 @@ dist
 /static/*
 !/static/.gitkeep
 example-components
+*.tgz

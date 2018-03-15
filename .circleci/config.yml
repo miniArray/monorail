@@ -29,14 +29,14 @@ jobs:
   test:
     environment:
       - NODE_ENV: development
-      - BASH_ENV: ~/.bashrc
+      - BASH_ENV: /home/circleci/.bashrc
     docker:
       - image: circleci/node:4.8.2
     steps:
       - checkout
       - run:
           name: Add node_modules to path
-          command: echo 'export PATH=~/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
+          command: touch $BASH_ENV && echo 'export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Test
           command: npm test

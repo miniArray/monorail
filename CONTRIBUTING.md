@@ -3,13 +3,13 @@
 ## Clone
 
 ```bash
-git clone https://github.com/miniArray/vue-monorail.git
+git clone https://github.com/miniArray/monorail.git
 ```
 
 ## Setup
 
 ```bash
-cd vue-monorail
+cd monorail
 npm install
 ```
 

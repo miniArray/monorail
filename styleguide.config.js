@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  title: 'vue-monorail',
+  title: 'monorail',
   styleguideDir: 'dist/guide',
   components: 'src/components/**/[A-Z]*.vue',
   defaultExample: true,

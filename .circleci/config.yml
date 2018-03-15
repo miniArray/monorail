@@ -9,7 +9,7 @@ jobs:
     environment:
       - NODE_ENV: development
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:9.7.1
     steps:
       - checkout
       - run:

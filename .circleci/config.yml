@@ -37,10 +37,7 @@ jobs:
       - run:
           name: Test
           command: |
-            touch $BASH_ENV
-            echo 'export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
-            echo $PATH
-            cat $BASH_ENV
+            export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH'
             npm test
       - store_artifacts:
           path: coverage

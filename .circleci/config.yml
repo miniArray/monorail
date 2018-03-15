@@ -35,11 +35,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Add node_modules to path
-          command: touch $BASH_ENV && echo 'export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
-      - run:
           name: Test
-          command: npm test
+          command: |
+            touch $BASH_ENV
+            echo 'export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
+            echo $PATH
+            cat $BASH_ENV
+            npm test
       - store_artifacts:
           path: coverage
           prefix: coverage

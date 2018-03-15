@@ -34,7 +34,8 @@
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "release": "semantic-release",
     "deploy": "node build/deploy.pre && push-dir --dir=dist/guide --branch=gh-pages --verbose; node build/deploy.post",
-    "dist": "npm run build && npm run deploy"
+    "dist": "npm run build && npm run deploy",
+    "component:create": "node build/template-component.js"
   },
   "devDependencies": {
     "babel-jest": "^21.0.2",
@@ -58,7 +59,8 @@
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.5.0",
     "vue-styleguidist": "1.4.8",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "mkdirp": "^0.5.1"
   },
   "husky": {
     "hooks": {

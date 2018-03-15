@@ -14,8 +14,6 @@ function install (Vue, args) {
   Object.values(components).map(component => {
     Vue.use(component)
   })
-
-//   Vue.component(MSwitch.name, MSwitch)
 }
 
 function Monorail (Vue, args) {

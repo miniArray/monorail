@@ -34,7 +34,10 @@ jobs:
       - checkout
       - run:
           name: Test
-          command: npm test
+          command: |
+            export PATH=/home/circleci/project/node_modules/.bin:$PATH
+            echo $PATH
+            npm test
       - store_artifacts:
           path: coverage
           prefix: coverage

@@ -5,7 +5,7 @@ general:
      - master
      - /feature-.*/
 jobs:
-  all:
+  build:
     environment:
       - NODE_ENV: development
     docker:
@@ -46,7 +46,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - all:
+      - build:
           filters:
             branches:
               only: master

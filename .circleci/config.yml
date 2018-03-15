@@ -1,4 +1,9 @@
 version: 2
+general:
+  branches:
+    only:
+     - master
+     - /feature-.*/
 jobs:
   build:
     environment:
@@ -24,10 +29,14 @@ jobs:
   test:
     environment:
       - NODE_ENV: development
+      - BASH_ENV: ~/.bashrc
     docker:
       - image: circleci/node:4.8.2
     steps:
       - checkout
+      - run:
+          name: Add node_modules to path
+          command: echo 'export PATH=~/vue-monorail/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Test
           command: npm test

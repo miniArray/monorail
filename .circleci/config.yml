@@ -37,7 +37,7 @@ jobs:
           command: |
             export PATH=/home/circleci/project/node_modules/.bin:$PATH
             echo $PATH
-            ls /home/circleci/project/node_modules/.bin
+            ls -R $HOME
             npm test
       - store_artifacts:
           path: coverage

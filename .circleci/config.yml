@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Test
           command: |
-            export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH'
+            export PATH=$HOME/vue-monorail/node_modules/.bin:$PATH
             npm test
       - store_artifacts:
           path: coverage

@@ -11,6 +11,9 @@ module.exports = {
   sections: [{
     name: 'Selection',
     components: 'src/components/+(MSwitch)/*.vue',
+  }, {
+    name: 'Navigation',
+    components: 'src/components/+(MNavigation)/*.vue',
   }],
   require: [
     path.join(__dirname, './node_modules/metro4/build/css/metro.css')

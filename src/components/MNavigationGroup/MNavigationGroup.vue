@@ -6,29 +6,20 @@
 </template>
 
 <style scoped>
-.m-title:first-child {
-  margin: 0;
-  border-top-width: 0;
-}
-
 .m-title {
-  height: 40px;
   display: block;
   float: none;
   position: relative;
   cursor: pointer;
-  color: inherit;
   background-color: inherit;
-  height: auto;
-
+  height: 40px;
   font-size: 12px;
   line-height: 40px;
-  padding: 0 8px;
-  color: #646464;
-  /* border-bottom: 1px solid #646464; */
-  padding-left: 18px;
-  font-weight: bold;
+  color: #757575;
+  border-bottom: 1px solid #d8d8d8;
+  font-weight: 600;
   pointer-events: none;
+  margin: 9px 18px;
 }
 </style>
 

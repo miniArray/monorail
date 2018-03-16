@@ -4,9 +4,10 @@ module.exports = {
   title: 'monorail',
   styleguideDir: 'dist/guide',
   components: 'src/components/**/[A-Z]*.vue',
-  defaultExample: true,
+  defaultExample: false,
   showUsage: true,
   showCode: true,
+  template: 'build/styleguide/index.html',
   highlightTheme: 'material',
   sections: [{
     name: 'Selection',
@@ -14,8 +15,5 @@ module.exports = {
   }, {
     name: 'Navigation',
     components: 'src/components/+(MNavigation)/*.vue',
-  }],
-  require: [
-    path.join(__dirname, './node_modules/metro4/build/css/metro.css')
-  ]
-};
+  }]
+}

@@ -33,7 +33,7 @@
     "test": "run-s test:*",
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "release": "semantic-release",
-    "deploy": "node build/deploy.pre && push-dir --dir=dist/guide --branch=gh-pages --verbose; node build/deploy.post",
+    "deploy": "node build/deploy.pre && push-dir --dir=dist/guide --branch=gh-pages --verbose --force; node build/deploy.post",
     "dist": "npm run build && npm run deploy",
     "component:create": "node build/template-component.js"
   },

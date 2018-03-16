@@ -1,9 +1,7 @@
 <template>
   <div
-    :class="[
-      'navview',
-      'expanded-fs', {
-        compacted: compact
+    :class="['navview', 'expanded-fs', {
+      compacted: compact
     }]
     ">
     <div :class="['navview-pane']">
@@ -12,6 +10,8 @@
         @click="toggle()">
         <span class="default-icon-menu" />
       </button>
+      <!-- @slot Use this slot list -->
+      <slot name="list" />
     </div>
   </div>
 </template>
@@ -78,16 +78,59 @@ export default {
 </script>
 
 <docs>
+### Basic
+
 ```vue
 <template>
   <div style='height: 100px;'>
-    <MNavigation :compact.sync="compact" />
+    <m-navigation :compact.sync="compact" />
   </div>
 </template>
 
 <script>
   export default {
-    data() {
+    data () {
+      return {
+        compact: false
+      }
+    }
+  }
+</script>
+```
+
+### With menu
+
+```vue
+<template>
+  <div style='height: 300px;'>
+    <m-navigation :compact.sync="compact">
+      <ul slot="list" class="navview-menu">
+        <li>
+          <a href="#">
+            <span class="icon"><span class="mif-apps"/></span>
+            <span class="caption">Apps</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="#">
+            <span class="icon"><span class="mif-file-word"/></span>
+            <span class="caption">Word</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon"><span class="mif-file-excel"/></span>
+            <span class="caption">Excel</span>
+          </a>
+        </li>
+      </ul>
+    </m-navigation>
+  </div>
+</template>
+
+<script>
+  export default {
+    data () {
       return {
         compact: false
       }

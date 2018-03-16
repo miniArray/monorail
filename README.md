@@ -40,7 +40,7 @@ monorail supports **[evergreen browsers](https://www.techopedia.com/definition/3
 
 # Documentation
 
-You can find the monorail documentation [on the website](https://monorail.rocks).
+You can find the monorail documentation [on the website](http://monorail.rocks).
 
 ## One minute Quick-start
 
@@ -106,7 +106,7 @@ then you can run the tests (and get detailed output) by running:
 
 # Community Support
 
-Ask your support questions on the [monorail Discord Community](https://chat.monorail.rocks).
+Ask your support questions on the [monorail Discord Community](http://chat.monorail.rocks).
 
 ## Contributing
 

@@ -2,6 +2,11 @@ const { writeFileSync } = require('fs')
 const { sync: touchDir } = require('mkdirp')
 const { resolve } = require('path')
 
+const kebabCase = str => str
+  .split(/(?=[A-Z])/)
+  .map(s => s.toLowerCase())
+  .join('-')
+
 const createIndexTemplate = name => `
 import ${name} from './${name}.vue'
 
@@ -26,12 +31,34 @@ const createComponentTemplate = name => `
 <script>
 export default {
   name: '${name}',
+
+  props: {
+    /**
+     * Caption of group
+     */
+    caption: {
+      type: String,
+      default: ''
+    },
+  }
 }
 </script>
 
 <docs>
-\`\`\`js
-<${name} />
+\`\`\`vue
+<template>
+  <${kebabCase(name)} />
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  }
+}
+</script>
 \`\`\`
 </docs>
 `.trim()

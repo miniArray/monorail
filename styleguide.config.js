@@ -15,5 +15,8 @@ module.exports = {
   }, {
     name: 'Navigation',
     components: 'src/components/+(MNavigation*)/*.vue',
+  }, {
+    name: 'Controls',
+    components: 'src/components/+(MCharm)/*.vue',
   }]
 }

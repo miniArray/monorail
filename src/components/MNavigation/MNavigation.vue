@@ -105,24 +105,9 @@ export default {
   <div style='height: 300px;'>
     <m-navigation :compact.sync="compact">
       <ul slot="list" class="navview-menu">
-        <li>
-          <a href="#">
-            <span class="icon"><span class="mif-apps"/></span>
-            <span class="caption">Apps</span>
-          </a>
-        </li>
-        <li class="active">
-          <a href="#">
-            <span class="icon"><span class="mif-file-word"/></span>
-            <span class="caption">Word</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><span class="mif-file-excel"/></span>
-            <span class="caption">Excel</span>
-          </a>
-        </li>
+        <m-navigation-item icon="mif-home" caption="Home" />
+        <m-navigation-item icon="mif-gamepad" caption="Games" :active="true" />
+        <m-navigation-item icon="mif-apps" caption="Apps" :active="false" />
       </ul>
     </m-navigation>
   </div>

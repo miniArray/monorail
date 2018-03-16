@@ -14,6 +14,6 @@ module.exports = {
     components: 'src/components/+(MSwitch)/*.vue',
   }, {
     name: 'Navigation',
-    components: 'src/components/+(MNavigation)/*.vue',
+    components: 'src/components/+(MNavigation*)/*.vue',
   }]
 }

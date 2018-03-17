@@ -4,7 +4,9 @@
       compacted: compact
     }]
     ">
-    <div :class="['navview-pane']">
+    <div
+      ref="pane"
+      :class="['navview-pane']">
       <button
         class="pull-button"
         @click="toggle()">
@@ -21,6 +23,8 @@
 </style>
 
 <script>
+let ro
+
 export default {
   name: 'MNavigation',
 
@@ -38,23 +42,34 @@ export default {
 		 */
     compactAt: {
       type: Number,
-      default: 600,
+      default: 1200,
+    }
+  },
+
+  data () {
+    return {
+      animating: false
     }
   },
 
   beforeDestroy () {
-    window.removeEventListener('resize', this.onResize)
+    ro.disconnect()
   },
 
   mounted () {
-    window.addEventListener('resize', this.onResize)
+    // const { pane } = this.$refs
+
+    // pane.addEventListener('transitionend', () => this.animating = false, false);
+
+    ro = new ResizeObserver(entries => this.onResize(entries[0].contentRect))
+    ro.observe(document.querySelector('body'))
   },
 
   methods: {
-    onResize ({ target }) {
-      if (target.window.innerWidth <= this.compactAt && !this.compact)
+    onResize (rect) {
+      if (rect.width <= this.compactAt && !this.compact)
         this['update:compact'](true)
-      else if (target.window.innerWidth >= this.compactAt && this.compact)
+      else if (rect.width >= this.compactAt && this.compact)
         this['update:compact'](false)
     },
 
@@ -68,9 +83,10 @@ export default {
     /**
      * Compact change event
      * @event update:compact
-     * @type {boolean}
+     * @type {Boolean}
      */
     ['update:compact'] (bool) {
+      this.animating = true
       this.$emit('update:compact', bool)
     }
   }

@@ -13,7 +13,6 @@ jobs:
       - EMAIL: "simon@simonwjackson.com"
       - GIT_AUTHOR_NAME: "Simon W. Jackson"
       - GIT_COMMITTER_NAME: "Simon W. Jackson"
-
     docker:
       - image: circleci/node:9.7.1
     steps:

@@ -23,7 +23,7 @@
     "serve": "run-p serve:*",
     "serve:styleguide": "vue-styleguidist server",
     "build": "run-p build:*",
-    "build:styleguide": "vue-styleguidist build",
+    "build:styleguide": "vue-styleguidist build && echo monorail.rocks > dist/guide/CNAME",
     "build:components": "webpack",
     "commit": "git cz",
     "commit:all": "git add -A && npm run commit",

@@ -73,20 +73,21 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-  [data-role="charms"]
-    background-color: rgb(29, 29, 29)
-    display: flex
-    padding: 2rem
+  [data-role="charms"] {
+    background-color: hsl(0, 0%, 11.4%);
+    display: flex;
+    padding: 2rem;
+  }
 
+  .top-side,
+  .bottom-side {
+    flex-direction: row;
+  }
 
-  .top-side
-  .bottom-side
-    flex-direction: row
-
-  .left-side
-  .right-side
-    flex-direction: column
-
+  .left-side,
+  .right-side {
+    flex-direction: column;
+  }
 </style>
 
 <docs>

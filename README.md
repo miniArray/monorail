@@ -28,6 +28,9 @@
   <a href="./docs/donate.md">
     <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat" alt="Chat">
   </a>
+  <a href="https://github.com/nhnent">
+    <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-miniArray-ff1414.svg" alt="code with hearth by miniArray">
+  </a>
 </div>
 
 # Introduction

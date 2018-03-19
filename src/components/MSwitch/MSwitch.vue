@@ -13,12 +13,11 @@
 </template>
 
 <style scoped>
-
 </style>
 
 <script>
 export default {
-  name:'MSwitch',
+  name: 'MSwitch',
 
   model: {
     event: 'change',
@@ -27,22 +26,22 @@ export default {
 
   props: {
     /**
-		 * Caption next to the switch
-		 */
+     * Caption next to the switch
+     */
     caption: {
       type: String,
-      default: '',
+      default: ''
     },
     /**
-		 * Disabled state of the switch
-		 */
+     * Disabled state of the switch
+     */
     disabled: {
       type: Boolean,
       default: false
     },
     /**
-		 * Checked state of the switch
-		 */
+     * Checked state of the switch
+     */
     checked: {
       type: Boolean,
       default: false

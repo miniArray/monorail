@@ -40,17 +40,18 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.m-item
-  cursor: default
-  user-select: none
+.m-item {
+  cursor: default;
+  user-select: none;
+}
 
-.m-caption
-  box-sizing: border-box
-  color: rgb(117, 117, 117)
-  display: block
-  height: 40px
-  white-space: nowrap
-
+.m-caption {
+  box-sizing: border-box;
+  color: rgb(117, 117, 117);
+  display: block;
+  height: 40px;
+  white-space: nowrap;
+}
 /**/
 </style>
 

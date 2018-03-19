@@ -22,20 +22,21 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.m-title
-  display: block
-  float: none
-  position: relative
-  cursor: pointer
-  background-color: inherit
-  height: 40px
-  font-size: 12px
-  line-height: 40px
-  color: #757575
-  border-bottom: 1px solid #d8d8d8
-  font-weight: 600
-  pointer-events: none
-  margin: 9px 18px
+.m-title {
+  display: block;
+  float: none;
+  position: relative;
+  cursor: pointer;
+  background-color: inherit;
+  height: 40px;
+  font-size: 12px;
+  line-height: 40px;
+  color: hsl(0, 0%, 45.9%);
+  border-bottom: 1px solid hsl(0, 0%, 84.7%);
+  font-weight: 600;
+  pointer-events: none;
+  margin: 9px 18px;
+}
 </style>
 
 <docs>

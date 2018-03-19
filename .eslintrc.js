@@ -1,18 +1,17 @@
 module.exports = {
   plugins: [
-    "security"
+    "security",
   ],
   extends: [
-    'eslint:recommended',
     'plugin:vue/recommended',
-    "plugin:security/recommended",
+    'plugin:security/recommended',
+    'eslint:recommended',
   ],
   rules: {
-    "space-before-function-paren": ["error", "always"],
     "arrow-parens": ["error", "as-needed"],
     quotes: ["error", "single"],
-    "indent": ["error", 2]
-    // 'no-unused-vars': 'error'
-  //   // "extends": "plugin:vue/base"
+    "indent": ["error", 2],
+    "space-before-function-paren": ["error", "always"],
+    'no-unused-vars': 'error'
   }
 }

@@ -7,21 +7,6 @@
   </li>
 </template>
 
-<style scoped>
-.m-item {
-  cursor: default;
-  user-select: none;
-}
-
-.m-caption {
-  box-sizing: border-box;
-  color: rgb(117, 117, 117);
-  display: block;
-  height: 40px;
-  white-space: nowrap;
-}
-</style>
-
 <script>
 export default {
   name: 'MNavigationItem',
@@ -53,6 +38,21 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="postcss">
+.m-item
+  cursor: default
+  user-select: none
+
+.m-caption
+  box-sizing: border-box
+  color: rgb(117, 117, 117)
+  display: block
+  height: 40px
+  white-space: nowrap
+
+/**/
+</style>
 
 <docs>
 ```js

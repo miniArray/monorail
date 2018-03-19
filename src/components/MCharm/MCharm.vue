@@ -8,24 +8,6 @@
   </div>
 </template>
 
-<style scoped>
-  [data-role="charms"] {
-    background-color: rgb(29, 29, 29);
-    display: flex;
-    padding: 2rem;
-  }
-
-  .top-side,
-  .bottom-side {
-    flex-direction: row;
-  }
-
-  .left-side,
-  .right-side {
-    flex-direction: column;
-  }
-</style>
-
 <script>
 import R from '../../utils/toolbelt'
 
@@ -89,6 +71,23 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="postcss">
+  [data-role="charms"]
+    background-color: rgb(29, 29, 29)
+    display: flex
+    padding: 2rem
+
+
+  .top-side
+  .bottom-side
+    flex-direction: row
+
+  .left-side
+  .right-side
+    flex-direction: column
+
+</style>
 
 <docs>
 ```vue

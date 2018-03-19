@@ -13,6 +13,9 @@ module.exports = {
     name: 'Selection',
     components: 'src/components/+(MSwitch)/*.vue',
   }, {
+    name: 'Windows',
+    components: 'src/components/+(MWindow*|MTitleBar)/*.vue',
+  },  {
     name: 'Navigation',
     components: 'src/components/+(MNavigation*)/*.vue',
   }, {

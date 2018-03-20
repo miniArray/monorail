@@ -22,7 +22,7 @@
   <br>
   <img src="https://img.shields.io/codecov/c/github/miniArray/monorail.svg" alt="Codecov" />
   <a href="https://codebeat.co/projects/github-com-miniarray-monorail-master"><img src="https://codebeat.co/badges/83a1a3eb-c751-4782-b994-e2a16428a1b1" alt="codebeat badge" /></a>
-  <a href="https://chat.monorail.rocks">
+  <a href="http://chat.monorail.rocks">
     <img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat">
   </a>
   <a href="./docs/donate.md">
@@ -31,7 +31,9 @@
   <a href="https://github.com/nhnent">
     <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%99%A5%20by-miniArray-ff1414.svg" alt="code with hearth by miniArray">
   </a>
+  <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
 </div>
+
 
 # Introduction
 

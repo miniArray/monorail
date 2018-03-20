@@ -8,6 +8,10 @@ Currently I'm creating several front-end Vue (and vanilla) components, tools, No
 
 ## One-time donation
 
+<div style="text-align: center">
+  <a href="https://liberapay.com/miniArray/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+</div>
+
 - [Donate via Paypal](https://www.paypal.me/simonwjackson)
 - Donate via Bitcoin: 1KqVXmVdrBzRGnrG7wQ7XQuRTNqFTn6EKs
 

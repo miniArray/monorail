@@ -1,7 +1,7 @@
 <template>
   <div class="m-window-caption">
-    <div class="m-button m-button--back m-item ">➔</div>
-    <div class="m-title m-item ">Metro 4</div>
+    <div class="m-button m-button--back m-item">➔</div>
+    <div class="m-title m-item ">{{ caption }}</div>
     <div class="m-button m-button--min m-item m-item--end">🗕</div>
     <div class="m-button m-button--max m-item m-item--end">🗖</div>
     <div class="m-button m-button--close m-item m-item--end">×</div>
@@ -113,13 +113,11 @@ export default {
 <docs>
 ```vue
 <template>
-  <m-title-bar />
+  <m-title-bar caption="Title" />
 </template>
 
 <script>
 export default {
-  name: "MTitleBar",
-
   props: {
     /**
      * Caption of group

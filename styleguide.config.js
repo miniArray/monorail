@@ -16,6 +16,10 @@ module.exports = {
     name: 'Windows',
     components: 'src/components/+(MWindow*|MTitleBar)/*.vue',
   },  {
+    name: 'Transitions',
+    components: 'src/components/+(MCollapsible)/*.vue',
+  }, {
+  },  {
     name: 'Navigation',
     components: 'src/components/+(MNavigation*)/*.vue',
   }, {

@@ -71,6 +71,7 @@
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.2.3",
     "validate-commit": "^3.4.0",
+    "velocity-animate": "^1.5.1",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.5.0",
     "vue-styleguidist": "1.4.8",

@@ -1,4 +1,4 @@
-const { writeFileSync } = require('fs')
+const { writeFileSync, existsSync } = require('fs')
 const { sync: touchDir } = require('mkdirp')
 const { resolve } = require('path')
 
@@ -73,6 +73,8 @@ const create = name => {
   const root = resolve(__dirname, '../src/components', name)
   const index = resolve(root, 'index.js')
   const component = resolve(root, `${name}.vue`)
+
+  if (existsSync(component)) console.log(`Component ${name} already exists. Skipping..`) && process.exit(0)
 
   write(component, createComponentTemplate(name))
   write(index, createIndexTemplate(name))

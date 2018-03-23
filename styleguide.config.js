@@ -31,5 +31,8 @@ module.exports = {
   }, {
     name: 'Controls',
     components: 'src/components/+(MCharm)/*.vue',
-  }]
+  }],
+  require: [
+    path.join(__dirname, 'build/styleguide/index.js')
+  ]
 }

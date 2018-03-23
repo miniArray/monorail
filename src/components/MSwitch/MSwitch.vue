@@ -16,6 +16,9 @@
 </style>
 
 <script>
+/**
+ * @see See https://getmwf.com/components/form/toggle.html for more details.
+ */
 export default {
   name: 'MSwitch',
 

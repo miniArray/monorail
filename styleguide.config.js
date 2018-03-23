@@ -20,12 +20,8 @@ module.exports = {
     components: 'src/components/+(MSwitch)/*.vue',
   }, {
     name: 'Windows',
-    components: 'src/components/+(MWindow*|MTitleBar)/*.vue',
-  },  {
-    name: 'Transitions',
-    components: 'src/components/+(MCollapsible)/*.vue',
+    components: 'src/components/+(MWindow*|MTitleBar|MSplitView)/*.vue',
   }, {
-  },  {
     name: 'Navigation',
     components: 'src/components/+(MNavigation*)/*.vue',
   }, {

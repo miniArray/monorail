@@ -10,6 +10,12 @@ module.exports = {
   template: 'build/styleguide/index.html',
   highlightTheme: 'material',
   sections: [{
+    name: 'Introduction', content: './README.md'
+  }, {
+    name: 'Contributing', content: './docs/CONTRIBUTING.md'
+  }, {
+    name: 'Donate', content: './docs/donate.md'
+  }, {
     name: 'Selection',
     components: 'src/components/+(MSwitch)/*.vue',
   }, {

@@ -1,8 +1,12 @@
-<div style="text-align: center">
+<p align="center">
   <img src="./assets/logo.png" />
-  <h3>Metro UI compent library for <a href="https://vuejs.org">Vue.js</a></h3>
-
   <br>
+  Metro UI compent library for <a href="https://vuejs.org">Vue.js</a>
+</p>
+
+<p><br></p>
+
+<p align="center">
   <img src="https://img.shields.io/npm/v/@miniarray/monorail.svg" alt="npm" />
   <img src="https://img.shields.io/circleci/project/github/miniArray/monorail.svg" alt="CircleCI" />
   <img src="https://img.shields.io/github/license/miniArray/monorail.svg" alt="license" />
@@ -13,10 +17,6 @@
   <img src="https://img.shields.io/github/last-commit/miniArray/monorail.svg" alt="GitHub last commit" />
   <a href="https://www.npmjs.com/package/@miniarray/monorail"><img src="https://img.shields.io/npm/dm/@miniarray/monorail.svg" alt="npm" /></a>
   <br>
-  <!-- <a href="https://david-dm.org/miniArray/monorail?type=dev"><img src="https://david-dm.org/miniArray/monorail/dev-status.svg" alt="devDependenciesStatus" /></a>
-  <a href="https://david-dm.org/miniArray/monorail?type=peer"><img src="https://david-dm.org/miniArray/monorail/peer-status.svg" alt="peerDependenciesStatus" /></a>
-  <a href="https://nodesecurity.io/orgs/miniarray/projects/12ea7e2d-3c86-4196-b4ad-bb8abc355d19"><img src="https://nodesecurity.io/orgs/miniarray/projects/12ea7e2d-3c86-4196-b4ad-bb8abc355d19/badge" alt="NSP Status" /></a> -->
-  <!-- <img src="https://img.shields.io/codecov/c/github/miniArray/monorail.svg" alt="Codecov" /> -->
   <a href="https://codebeat.co/projects/github-com-miniarray-monorail-master"><img src="https://codebeat.co/badges/83a1a3eb-c751-4782-b994-e2a16428a1b1" alt="codebeat badge" /></a>
   <a href="http://chat.monorail.rocks">
     <img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat">
@@ -30,15 +30,13 @@
   <br>
   <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
   <a href="https://unpkg.com/@miniarray/monorail/dist/components/monorail.js"><img src="http://img.badgesize.io/https://unpkg.com/@miniarray/monorail/dist/components/monorail.js?compression=gzip"></a>
-  <!-- <img src="http://npm.packagequality.com/badge/@miniarray/monorail.png"/> -->
   <a href="https://codeclimate.com/github/miniArray/monorail/maintainability"><img src="https://api.codeclimate.com/v1/badges/91b2544d689f9c3cfbcb/maintainability" /></a>
   <br>
-  <!-- <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/miniArray/monorail.svg" alt="Greenkeeper badge" /></a> -->
   <a href="https://github.com/miniArray/monorail/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome" /></a>
   <a href="https://www.codetriage.com/miniarray/monorail"><img src="https://www.codetriage.com/miniarray/monorail/badges/users.svg" alt="Open Source Helpers" /></a>
   <br>
   <br>
-</div>
+</p>
 
 
 # Introduction
@@ -78,6 +76,7 @@ You can find the monorail documentation [on the website](http://monorail.rocks).
   </body>
 </html>
 ```
+
 # Installation
 
 ## Modern
@@ -87,16 +86,15 @@ $ npm install @miniarray/monorail
 $ npm install vue metro4 # dependencies
 ```
 
-```js
+```js static
 import Vue from 'vue'
-import Monorail from '@miniarray/monorail'
+import Monorail from '@miniarray/monorail/src'
 import 'metro4/build/css/metro-all.css' // Required for CSS styles
 
 Vue.use(Monorail)
 ```
 
 ## CDN
-
 ```html
 <link href="https://unpkg.com/metro4@4/build/css/metro-all.css" rel="stylesheet" />
 <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
@@ -109,11 +107,15 @@ Vue.use(Monorail)
 
 Installed the dependencies, via:
 
-    npm install
+```bash
+npm install
+```
 
 then you can run the tests (and get detailed output) by running:
 
-    npm test
+```bash
+npm test
+```
 
 # Community Support
 

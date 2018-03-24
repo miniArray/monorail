@@ -9,12 +9,13 @@ module.exports = {
   showCode: true,
   template: 'build/styleguide/index.html',
   highlightTheme: 'material',
+
   sections: [{
-    name: 'Introduction', content: './README.md'
+    content: './README.md'
   }, {
-    name: 'Contributing', content: './docs/CONTRIBUTING.md'
+    content: './docs/CONTRIBUTING.md'
   }, {
-    name: 'Donate', content: './docs/donate.md'
+    content: './docs/donate.md'
   }, {
     name: 'Selection',
     components: 'src/components/+(MSwitch)/*.vue',
@@ -29,6 +30,7 @@ module.exports = {
     components: 'src/components/+(MCharm)/*.vue',
   }],
   require: [
-    path.join(__dirname, 'build/styleguide/index.js')
+    path.join(__dirname, 'build/styleguide/index.js'),
+    path.join(__dirname, 'build/styleguide/index.css')
   ]
 }

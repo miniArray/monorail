@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="m-title">{{ caption }}</div>
-    <slot />
+    <div>
+      <h2>{{ value.caption }}</h2>
+      <m-navigation-item
+        v-for="(item, index) in value.items"
+        :key="index"
+        :active-uid="activeUid"
+        :caption="item.caption" />
+    </div>
   </div>
 </template>
 
@@ -11,11 +17,21 @@ export default {
 
   props: {
     /**
-     * Caption of group
+     * Group collection
      */
-    caption: {
-      type: String,
-      default: ''
+    value: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+
+    /**
+     * @ignore
+     */
+    activeUid: {
+      type: Number,
+      default: -1
     },
   }
 }

@@ -1,10 +1,12 @@
 <template>
-  <li :class="['m-item', { active }]">
-    <a>
-      <span class="icon"><span :class="icon"/></span>
-      <span class="caption">{{ caption }}</span>
-    </a>
-  </li>
+  <div
+    :class="[
+      'list-item',
+      { active: isActive }
+    ]"
+    @click="activate">
+    {{ caption }}
+  </div>
 </template>
 
 <script>
@@ -18,6 +20,14 @@ export default {
     active: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * @ignore
+     */
+    activeUid: {
+      type: Number,
+      default: -1
     },
 
     /**
@@ -35,7 +45,43 @@ export default {
       type: String,
       default: ''
     }
-  }
+  },
+
+  inject: {
+    _activate: {
+      from: 'activate',
+      default: () => {}
+    }
+  },
+
+  data () {
+    return {
+      isActive: false
+    }
+  },
+
+  watch: {
+    active (val) {
+      this.isActive = val
+    },
+
+    activeUid (uid) {
+      this.isActive = this._uid === uid
+    }
+  },
+
+  created () {
+    // this.dispatcher.$on('activated', this.deactivate)
+  },
+
+  methods: {
+    activate () {
+      this.isActive = true
+      this._activate(this)
+      // console.log(this.dispatcher)
+      // if (this.dispatcher) this.dispatcher.$emit('activate', this)
+    }
+  },
 }
 </script>
 
@@ -43,6 +89,11 @@ export default {
 .m-item {
   cursor: default;
   user-select: none;
+}
+
+.active {
+  background: #ddd;
+  outline: 1px solid green;
 }
 
 .m-caption {
@@ -55,12 +106,4 @@ export default {
 /**/
 </style>
 
-<docs>
-```js
-<div class='navview'>
-  <ul class='navview-menu'>
-    <m-navigation-item icon="mif-gamepad" caption="Games" :active="true" />
-  </ul>
-</div>
-```
-</docs>
+<docs></docs>

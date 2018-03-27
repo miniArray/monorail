@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    "security",
+    'security',
   ],
   extends: [
     'plugin:vue/recommended',
@@ -8,10 +8,15 @@ module.exports = {
     'eslint:recommended',
   ],
   rules: {
-    "arrow-parens": ["error", "as-needed"],
-    quotes: ["error", "single"],
-    "indent": ["error", 2],
-    "space-before-function-paren": ["error", "always"],
-    'no-unused-vars': 'error'
+    'arrow-parens': ['error', 'as-needed'],
+    quotes: ['error', 'single'],
+    'indent': ['error', 2],
+    'space-before-function-paren': ['error', 'always'],
+    'arrow-spacing': [2, {
+      'before': true,
+      'after': true
+    }],
+    'no-unused-vars': 'error',
+    semi: ['error', 'never']
   }
 }

@@ -1,0 +1,10 @@
+.split-view(:style='splitViewStyles')
+  .pane(:style='paneStyles')
+    .pane__wrapper(:style='paneWrapperStyles')
+      block slotPane
+        // @slot Content for pane slot
+        slot(name='pane')
+  .content
+    block slotContent
+      // @slot Content for content slot
+      slot(name='content')

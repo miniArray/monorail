@@ -1,44 +1,20 @@
-<template>
-  <div
-    :style="splitViewStyles"
-    class="split-view">
-    <div
-      :style="paneStyles"
-      class="pane">
-      <div
-        :style="[paneWrapperStyles, {
-          backgroundColor
-        }]"
-        class="pane__wrapper">
-        <button
-          :style="buttonStyle"
-          class="pull-button"
-          @click="toggle">
-          <span class="default-icon-menu" />
-        </button>
-        <br>
-        <button
-          :style="buttonStyle"
-          class="pull-button"
-          @click="toggle">
-          <span class="default-icon-menu" />
-        </button>
-        <m-navigation
-          v-model="value"
-          :collapsed="collapsed" />
-      </div>
-    </div>
-    <div class="content">
-      <!-- @slot Content slot -->
-      <slot />
-    </div>
-  </div>
+<template lang="pug">
+extends ../MSplitView/MSplitView.pug
+
+block slotPane
+  div(style="background: #eee")
+    button.pull-button(:style='buttonStyle', @click='toggle')
+      span.default-icon-menu
+    m-navigation(v-model='value', :collapsed='collapsed')
+
+block slotContent
+  // @slot Content slot
+  slot
 </template>
 
 <script>
 import SplitView from '../MSplitView'
 import MNavigation from '../MNavigation'
-
 
 export default {
   name: 'MNavigationView',

@@ -1,22 +1,5 @@
-<template>
-  <div
-    :style="splitViewStyles"
-    class="split-view">
-    <div
-      :style="paneStyles"
-      class="pane">
-      <div
-        :style="paneWrapperStyles"
-        class="pane__wrapper">
-        <!-- @slot Content for pane slot -->
-        <slot name="pane" />
-      </div>
-    </div>
-    <div class="content">
-      <!-- @slot Content for content slot -->
-      <slot name="content" />
-    </div>
-  </div>
+<template lang="pug">
+extends ./MSplitView.pug
 </template>
 
 <style scoped lang="postcss">

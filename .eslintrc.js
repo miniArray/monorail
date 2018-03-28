@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
     'security',
+    'pug'
   ],
   extends: [
     'plugin:vue/recommended',

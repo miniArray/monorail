@@ -111,23 +111,7 @@ export default {
 </style>
 
 <docs>
-```vue
-<template>
-  <m-title-bar caption="Title" />
-</template>
-
-<script>
-export default {
-  props: {
-    /**
-     * Caption of group
-     */
-    caption: {
-      type: String,
-      default: ""
-    }
-  }
-};
-</script>
+```js
+<m-title-bar caption="Title" />
 ```
 </docs>

@@ -60,6 +60,7 @@ import equals from 'ramda/es/equals'
 import pipe from 'ramda/es/pipe'
 import cond from 'ramda/es/cond'
 import tween from 'popmotion/animations/tween'
+import collapsable from '../../mixins/collapsable'
 
 const px = num => `${num}px`
 const splitViewOptions = [
@@ -70,15 +71,9 @@ const splitViewOptions = [
 export default {
   name: 'MSplitView',
 
-  props: {
-    /**
-     * Collapsed state of the pane
-     */
-    collapsed: {
-      type: Boolean,
-      default: false
-    },
+  mixins: [collapsable],
 
+  props: {
     /**
      * Width of pane when collapsed
      */
@@ -146,7 +141,6 @@ export default {
   },
 
   created () {
-
     this.width = ifElse(
       always(true),
       always(this.collapsedWidth),

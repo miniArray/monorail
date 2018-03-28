@@ -1,19 +1,29 @@
 <template>
-  <div>
-    <div>
-      <h2>{{ value.caption }}</h2>
-      <m-navigation-item
-        v-for="(item, index) in value.items"
-        :key="index"
-        :active-uid="activeUid"
-        :caption="item.caption" />
-    </div>
+  <div :class="{ collapsed }">
+    <div class="m-title">{{ value.caption }}</div>
+    <m-navigation-item
+      v-for="(item, index) in value.items"
+      :key="index"
+      :active-uid="activeUid"
+      :icon="item.icon"
+      :caption="item.caption" />
   </div>
 </template>
 
 <script>
+import collapsable from '../../mixins/collapsable'
+import MNavigationItem from '../MNavigationItem'
+
 export default {
   name: 'MNavigationGroup',
+
+  components: {
+    MNavigationItem
+  },
+
+  mixins: [
+    collapsable
+  ],
 
   props: {
     /**
@@ -52,6 +62,13 @@ export default {
   font-weight: 600;
   pointer-events: none;
   margin: 9px 18px;
+}
+
+.collapsed .m-title {
+  height: 0;
+  font-size: 0;
+  width: 15px;
+  margin: 8px 17px;
 }
 </style>
 

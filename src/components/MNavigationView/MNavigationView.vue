@@ -1,32 +1,53 @@
 <template>
-  <div>
+  <div
+    :style="splitViewStyles"
+    class="split-view">
     <div
-      ref="indicator"
-      :style="indicatorStyles"
-      class="indicator" />
-    <m-navigation-group
-      v-for="(group, index) in value"
-      :key="index"
-      :active-uid="active"
-      v-model="value[index]" />
+      :style="paneStyles"
+      class="pane">
+      <div
+        :style="[paneWrapperStyles, {
+          backgroundColor
+        }]"
+        class="pane__wrapper">
+        <button
+          :style="buttonStyle"
+          class="pull-button"
+          @click="toggle">
+          <span class="default-icon-menu" />
+        </button>
+        <br>
+        <button
+          :style="buttonStyle"
+          class="pull-button"
+          @click="toggle">
+          <span class="default-icon-menu" />
+        </button>
+        <m-navigation
+          v-model="value"
+          :collapsed="collapsed" />
+      </div>
+    </div>
+    <div class="content">
+      <!-- @slot Content slot -->
+      <slot />
+    </div>
   </div>
 </template>
 
-<style scoped>
-.indicator {
-  width: 5px;
-  background-color: blue;
-  position: absolute;
-  transition: top .15s ease-in-out;
-  z-index: 1;
-}
-</style>
-
 <script>
-const px = num => `${num}px`
+import SplitView from '../MSplitView'
+import MNavigation from '../MNavigation'
+
 
 export default {
   name: 'MNavigationView',
+
+  components: {
+    MNavigation
+  },
+
+  extends: SplitView,
 
   props: {
     value: {
@@ -34,90 +55,96 @@ export default {
       default () {
         return []
       }
-    }
-  },
+    },
 
-  provide () {
-    return {
-      activate: this.activate
-    }
-  },
-
-  data () {
-    return {
-      active: null,
-      indicator: {
-        height: 0,
-        top: 0
-      }
+    backgroundColor: {
+      type: String,
+      default: '#ccc'
     }
   },
 
   computed: {
-    indicatorStyles () {
+    buttonStyle () {
       return {
-        height: px(this.indicator.height),
-        top: px(this.indicator.top)
+        width: this.$monorail.settings.listItemIcon + 'px',
+        height: this.$monorail.settings.listItemIcon + 'px',
+        border: 'none',
+        outline: 'none',
+        background: 'none'
       }
     }
   },
 
-  created () {
-    // _dispatcher.$on('activate', this.activate)
-  },
-
-  mounted () {
-    const firstItem = this.$children[0].$children[0]
-    firstItem.isActive = true
-    this.activate(firstItem)
-  },
-
   methods: {
-    activate ($component) {
-      const fromGrandparent = $component.$el.offsetTop + $component.$parent.$el.offsetTop
-      const size = .7
-      this.active = $component._uid
-      this.indicator.height = $component.$el.offsetHeight * size
-      this.indicator.top = fromGrandparent + ($component.$el.offsetHeight * (1 - size) / 2)
-      // _dispatcher.$emit('activated', this.active)
+    toggle () {
+      this['update:collapsed'](!this.collapsed)
     }
   }
 }
 </script>
 
 <docs>
+## Inline
+
 ```vue
 <template>
-  <m-navigation-view v-model="items" />
+  <div>
+    <m-navigation-view
+      :collapsed.sync="collapsed"
+      mode="compact-inline"
+      v-model="items"
+      backgroundColor="#eee"
+      style="min-height: 100px">
+        <m-content>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, aut eveniet tempora dolore modi officia distinctio rerum, deserunt aspernatur molestias possimus similique itaque ipsa ad, assumenda blanditiis labore hic maiores.
+        </m-content>
+    </m-navigation-view>
+  </div>
 </template>
 
 <script>
+const { items } = require('../../fixtures/navigation').default
+
 export default {
   data () {
     return {
-      items: [{
-        caption: "heading 1",
-        items: [{
-          id: 0,
-          caption: "item 1"
-        }, {
-          id: 1,
-          caption: "item 2"
-        }]
-      }, {
-        caption: "heading 2",
-        items: [{
-          id: 2,
-          caption: "another item 1"
-        }, {
-          id: 3,
-          caption: "other item 2"
-        }]
-      }]
+      collapsed: true,
+      items
     }
   }
 }
 </script>
+```
 
+## Overlay
+
+```vue
+<template>
+  <div>
+    <m-navigation-view
+      :collapsed.sync="collapsed"
+      mode="compact-overlay"
+      v-model="items"
+      backgroundColor="#eee"
+      style="min-height: 100px">
+        <m-content>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, aut eveniet tempora dolore modi officia distinctio rerum, deserunt aspernatur molestias possimus similique itaque ipsa ad, assumenda blanditiis labore hic maiores.
+        </m-content>
+    </m-navigation-view>
+  </div>
+</template>
+
+<script>
+const { items } = require('../../fixtures/navigation').default
+
+export default {
+  data () {
+    return {
+      collapsed: true,
+      items
+    }
+  }
+}
+</script>
 ```
 </docs>

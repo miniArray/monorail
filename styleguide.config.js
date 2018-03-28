@@ -20,11 +20,17 @@ module.exports = {
     name: 'Selection',
     components: 'src/components/+(MSwitch)/*.vue',
   }, {
+    name: 'Layout',
+    components: 'src/components/+(MContent)/*.vue',
+  }, {
+    name: 'List',
+    components: 'src/components/+(MList*)/*.vue',
+  }, {
     name: 'Windows',
     components: 'src/components/+(MWindow*|MTitleBar|MSplitView)/*.vue',
   }, {
     name: 'Navigation',
-    components: 'src/components/+(MNavigation*)/*.vue',
+    components: 'src/components/+(MNavigation|MNavigationView)/*.vue',
   }, {
     name: 'Controls',
     components: 'src/components/+(MCharm)/*.vue',

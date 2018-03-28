@@ -1,142 +1,156 @@
 <template>
-  <div
-    :class="['navview', 'expanded-fs', {
-      compacted: compact
-    }]
-    ">
+  <div>
     <div
-      ref="pane"
-      :class="['navview-pane']">
-      <button
-        class="pull-button"
-        @click="toggle()">
-        <span class="default-icon-menu" />
-      </button>
-      <!-- @slot Use this slot list -->
-      <slot name="list" />
-    </div>
+      ref="indicator"
+      :style="indicatorStyles"
+      class="indicator" />
+    <m-navigation-group
+      v-for="(group, index) in value"
+      :key="index"
+      :collapsed="collapsed"
+      :active-uid="active ? active._uid : -1"
+      v-model="value[index]" />
   </div>
 </template>
 
 <style scoped>
-
+.indicator {
+  width: 5px;
+  position: absolute;
+  transition: top 150ms ease-in-out;
+  z-index: 1;
+}
 </style>
 
 <script>
-let ro
+const px = num => `${num}px`
+import collapsable from '../../mixins/collapsable'
+import MNavigationGroup from '../MNavigationGroup'
 
 export default {
   name: 'MNavigation',
 
-  props: {
-    /**
-		 * compact state of the panel
-		 */
-    compact: {
-      type: Boolean,
-      default: false,
-    },
+  components: {
+    MNavigationGroup
+  },
 
-    /**
-		 * Auto compact at this browser width
-		 */
-    compactAt: {
-      type: Number,
-      default: 1200,
+  mixins: [
+    collapsable
+  ],
+
+  props: {
+    value: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
+
+  provide () {
+    return {
+      activate: this.activate
     }
   },
 
   data () {
     return {
-      animating: false
+      active: null,
+      indicator: {
+        height: 0,
+        top: 0
+      }
     }
   },
 
-  beforeDestroy () {
-    ro.disconnect()
+  computed: {
+    indicatorStyles () {
+      return {
+        height: px(this.indicator.height),
+        top: px(this.indicator.top),
+        backgroundColor: this.$monorail.settings.colors.baseHighColor,
+        transitionDuration: this.indicator.transitionDuration
+      }
+    }
+  },
+
+  watch: {
+    collapsed () {
+      this.indicator.transitionDuration = 0 + 's'
+      requestAnimationFrame(() => this.activate(this.active))
+      requestAnimationFrame(() => this.indicator.transitionDuration = 150 + 'ms')
+    }
   },
 
   mounted () {
-    // const { pane } = this.$refs
-
-    // pane.addEventListener('transitionend', () => this.animating = false, false);
-
-    ro = new ResizeObserver(entries => this.onResize(entries[0].contentRect))
-    ro.observe(document.querySelector('body'))
+    const firstItem = this.$children[0].$children[0]
+    firstItem.isActive = true
+    this.activate(firstItem)
   },
 
   methods: {
-    onResize (rect) {
-      if (rect.width <= this.compactAt && !this.compact)
-        this['update:compact'](true)
-      else if (rect.width >= this.compactAt && this.compact)
-        this['update:compact'](false)
-    },
-
-    /**
-     * Toggle compact state
-     */
-    toggle () {
-      this['update:compact'](!this.compact)
-    },
-
-    /**
-     * Compact change event
-     * @event update:compact
-     * @type {Boolean}
-     */
-    ['update:compact'] (bool) {
-      this.animating = true
-      this.$emit('update:compact', bool)
+    activate ($component) {
+      const fromGrandparent = $component.$el.offsetTop + $component.$parent.$el.offsetTop
+      const size = .7
+      this.active = $component
+      this.indicator.height = $component.$el.offsetHeight * size
+      this.indicator.top = fromGrandparent + ($component.$el.offsetHeight * (1 - size) / 2)
     }
-  }
+  },
 }
 </script>
 
 <docs>
-### Basic
-
 ```vue
 <template>
-  <div style='height: 100px;'>
-    <m-navigation :compact.sync="compact" />
-  </div>
+  <m-navigation v-model="items" style="background-color: #eee" />
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        compact: false
-      }
+
+export default {
+  data () {
+    return {
+      items: [{
+        caption: "Fruit",
+        items: [{
+          icon: '🍒',
+          caption: "Cherries"
+        }, {
+          icon: '🍈',
+          caption: "Melons"
+        }, {
+          icon: '🍓',
+          caption: "Strawberries"
+        }, {
+          icon: '🍊',
+          caption: "Tangerines"
+        }, {
+          icon: '🥝',
+          caption: "Kiwis"
+        }, {
+          icon: '🍇',
+          caption: "Grapes"
+        }]
+      }, {
+        caption: "Veggies",
+        items: [{
+          icon: '🍅',
+          caption: "Tomatoes"
+        }, {
+          icon: '🍆',
+          caption: "Melons"
+        }, {
+          icon: '🥕',
+          caption: "Carrots"
+        }, {
+          icon: '🥒',
+          caption: "Cucumbers"
+        }]
+      }]
     }
   }
-</script>
-```
-
-### With menu
-
-```vue
-<template>
-  <div style='height: 300px;'>
-    <m-navigation :compact.sync="compact">
-      <ul slot="list" class="navview-menu">
-        <m-navigation-item icon="mif-home" caption="Home" />
-        <m-navigation-item icon="mif-gamepad" caption="Games" :active="true" />
-        <m-navigation-item icon="mif-apps" caption="Apps" :active="false" />
-      </ul>
-    </m-navigation>
-  </div>
-</template>
-
-<script>
-  export default {
-    data () {
-      return {
-        compact: false
-      }
-    }
-  }
+}
 </script>
 ```
 </docs>

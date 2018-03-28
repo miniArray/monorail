@@ -5,15 +5,25 @@ function install (Vue, args) {
   this.installed = true
 
   const gridBase = 8
+  const basePadding = gridBase * 2
   const listItemIcon = gridBase * 6
-  const splitViewExpandedWidth = gridBase *38
+  const splitViewExpandedWidth = gridBase * 38
+  const baseHighColor = '#1ba1e2'
+  const navigationItemHover = '#cecece'
+  const navigationItemActive = '#b7b7b7'
 
   Vue.prototype.$monorail = new Vue({
     data: {
       settings: {
         gridBase,
+        basePadding,
         listItemIcon,
-        splitViewExpandedWidth
+        splitViewExpandedWidth,
+        colors: {
+          baseHighColor,
+          navigationItemHover,
+          navigationItemActive
+        }
       }
     }
   })

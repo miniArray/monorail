@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.fluid {
+  max-width: 100%;
+}
+
+.fill-height {
+  align-items: center;
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.no-select {
+  user-select: none;
+}

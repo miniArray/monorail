@@ -37,11 +37,8 @@ extends ./MSplitView.pug
 </style>
 
 <script>
-import always from 'ramda/es/always'
-import ifElse from 'ramda/es/ifElse'
-import equals from 'ramda/es/equals'
-import pipe from 'ramda/es/pipe'
-import cond from 'ramda/es/cond'
+import { always, ifElse, equals, pipe, cond, px } from '../../utils/toolbelt'
+
 import tween from 'popmotion/animations/tween'
 import collapsable from '../../mixins/collapsable'
 

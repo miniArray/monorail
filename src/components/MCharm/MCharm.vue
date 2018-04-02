@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import R from '../../utils/toolbelt'
+import { appendStr, inList, concat, when } from '../../utils/toolbelt'
 
 const positions = [
   'top',
@@ -34,7 +34,7 @@ export default {
     position: {
       type: String,
       default: 'bottom',
-      validator: val => R.inList(positions, val)
+      validator: val => inList(positions, val)
     },
 
     /**
@@ -43,7 +43,7 @@ export default {
     align: {
       type: String,
       default: 'start',
-      validator: val => R.inList(alignments, val)
+      validator: val => inList(alignments, val)
     },
 
     /**
@@ -57,14 +57,14 @@ export default {
 
   computed: {
     positionClass () {
-      return R.appendStr('-side', this.position)
+      return appendStr('-side', this.position)
     },
 
     alignment () {
       return {
-        justifyContent: R.when(
-          R.inList(['start', 'end']),
-          R.concat('flex-')
+        justifyContent: when(
+          inList(['start', 'end']),
+          concat('flex-')
         )(this.align)
       }
     }

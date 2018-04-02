@@ -1,21 +1,28 @@
 <template>
   <div
-    :style="{
-      padding: '0 ' + $monorail.settings.basePadding + 'px'
-  }">
+    :class="['content', {
+      fluid,
+      'justify-center': justifyCenter,
+      'align-center': alignCenter,
+      'fill-height': fillHeight
+    }]"
+  >
     <slot />
   </div>
 </template>
 
 <style scoped lang="postcss">
-.m-content {
-  padding: 16px;
+.content {
+  padding: var(--m-base-padding)
 }
 </style>
 
 <script>
+import flex from '../../mixins/flex'
+
 export default {
   name: 'MContent',
+  mixins: [flex]
 }
 </script>
 

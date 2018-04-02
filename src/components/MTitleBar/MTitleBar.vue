@@ -1,6 +1,6 @@
 <template>
   <div class="m-window-caption">
-    <div class="m-button m-button--back m-item">➔</div>
+    <!-- <div class="m-button m-button--back m-item">➔</div> -->
     <div class="m-title m-item ">{{ caption }}</div>
     <div class="m-button m-button--min m-item m-item--end">🗕</div>
     <div class="m-button m-button--max m-item m-item--end">🗖</div>
@@ -42,11 +42,9 @@ export default {
   outline: none;
   cursor: default;
   display: block;
-  color: hsl(0, 0%, 100%);
 
   &:hover {
-    background-color: hsla(0, 0%, 100%, 0.1);
-    color: hsl(0, 0%, 100%);
+    background-color: var(--m-colors--navigation-item-hover);
   }
 
   &:before {
@@ -66,6 +64,7 @@ export default {
   &--close {
     &:hover {
       background-color: hsl(0, 51.4%, 54.7%);
+      color: hsl(0, 0%, 100%);
     }
 
     &:active {
@@ -86,7 +85,7 @@ export default {
 .m-window-caption {
   display: flex;
   height: 40px;
-  background: hsl(200.1, 33.4%, 35.3%);
+  /* background: hsl(200.1, 33.4%, 35.3%); */
 }
 
 .m-item {

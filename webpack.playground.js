@@ -2,14 +2,12 @@ const { resolve } = require('path')
 
 module.exports = {
   entry: {
-    monorail: resolve(__dirname, 'src')
+    app: ['./build/playground/index.js']
   },
   output: {
-    path: resolve(__dirname, 'dist', 'components'),
-    library: 'monorail',
-    libraryTarget: 'umd',
-    filename: '[name].js',
-    umdNamedDefine: true
+    path: resolve(__dirname, 'dist/playground'),
+    publicPath: '/assets/',
+    filename: 'bundle.js'
   },
   module: {
     rules: [{

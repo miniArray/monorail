@@ -9,7 +9,9 @@ module.exports = {
   showCode: true,
   template: 'build/styleguide/index.html',
   highlightTheme: 'material',
-
+  mixins: [
+    './build/styleguide/mixin.js'
+  ],
   sections: [{
     content: './README.md'
   }, {

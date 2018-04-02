@@ -18,10 +18,10 @@
   "engines": {
     "node": ">=9"
   },
-  "dependencies": {},
   "scripts": {
     "serve": "run-p serve:*",
     "serve:styleguide": "vue-styleguidist server",
+    "serve:playground": "webpack-dev-server --config ./webpack.playground.js --content-base ./build/playground",
     "build": "run-p build:*",
     "build:styleguide": "vue-styleguidist build && echo monorail.rocks > dist/guide/CNAME && cp -R assets dist/guide/assets && cp -R .circleci dist/guide/.circleci",
     "build:components": "webpack",
@@ -76,6 +76,7 @@
     "validate-commit": "^3.4.0",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.5.0",
+    "vue-router": "^3.0.1",
     "vue-styleguidist": "1.4.8",
     "webpack": "^3.10.0"
   },

@@ -1,12 +1,18 @@
 <template>
   <div :class="{ collapsed }">
-    <div class="m-title">{{ value.caption }}</div>
+    <div
+      v-if="value.caption"
+      class="m-title">
+      {{ value.caption }}
+    </div>
     <m-navigation-item
       v-for="(item, index) in value.items"
       :key="index"
+      :to="item.to"
       :active-uid="activeUid"
-      :icon="item.icon"
-      :caption="item.caption" />
+      :caption="item.caption">
+      {{ item.icon }}
+    </m-navigation-item>
   </div>
 </template>
 
@@ -71,22 +77,3 @@ export default {
   margin: 8px 17px;
 }
 </style>
-
-<docs>
-```js
-<div class='navview'>
-  <div class='navview-menu'>
-    <m-navigation-item icon="mif-home" caption="Home" />
-    <m-navigation-group caption="Group Caption">
-      <m-navigation-item icon="mif-gamepad" caption="Games" :active="true" />
-      <m-navigation-item icon="mif-apps" caption="Apps" :active="false" />
-    </m-navigation-group>
-    <m-navigation-group caption="Group Caption">
-      <m-navigation-item icon="mif-home" caption="Home" />
-      <m-navigation-item icon="mif-gamepad" caption="Games" :active="false" />
-      <m-navigation-item icon="mif-apps" caption="Apps" :active="false" />
-    </m-navigation-group>
-  </div>
-</div>
-```
-</docs>

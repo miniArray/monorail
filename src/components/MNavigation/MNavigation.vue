@@ -1,15 +1,22 @@
 <template>
-  <div>
-    <div
+  <div
+    class="no-select"
+    style="background: #eee; height: 100%; display: flex; flex-direction: column;">
+    <!-- @wheel="onScroll"> -->
+    <div style="flex: 1;">
+      <slot name="start" />
+    </div>
+    <div style="flex: 999; overflow: scroll;">
+      <slot />
+      <slot name="middle" />
+    </div>
+    <div style="flex: 1;">
+      <slot name="end" />
+    </div>
+    <!-- <div
       ref="indicator"
       :style="indicatorStyles"
-      class="indicator" />
-    <m-navigation-group
-      v-for="(group, index) in value"
-      :key="index"
-      :collapsed="collapsed"
-      :active-uid="active ? active._uid : -1"
-      v-model="value[index]" />
+      class="indicator" /> -->
   </div>
 </template>
 
@@ -23,12 +30,28 @@
 </style>
 
 <script>
-const px = num => `${num}px`
 import collapsable from '../../mixins/collapsable'
 import MNavigationGroup from '../MNavigationGroup'
+import Vuex from 'vuex'
+import Vue from 'vue'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    active: null
+  },
+  mutations: {
+    active (state, active) {
+      state.active = active
+    }
+  }
+})
 
 export default {
   name: 'MNavigation',
+
+  store,
 
   components: {
     MNavigationGroup
@@ -47,110 +70,82 @@ export default {
     }
   },
 
-  provide () {
-    return {
-      activate: this.activate
-    }
-  },
+  // provide () {
+  //   return {
+  //     activate: this.activate
+  //   }
+  // },
 
   data () {
     return {
       active: null,
-      indicator: {
-        height: 0,
-        top: 0
-      }
+      // indicator: {
+      //   size: .7,
+      //   transitionDuration: 150,
+      //   styles: {
+      //     transitionDuration: 0,
+      //     height: 0,
+      //     top: 0
+      //   }
+      // }
     }
   },
 
   computed: {
     indicatorStyles () {
+      // console.log(this.indicator.styles.transitionDuration)
+
       return {
-        height: px(this.indicator.height),
-        top: px(this.indicator.top),
-        backgroundColor: this.$monorail.settings.colors.baseHighColor,
-        transitionDuration: this.indicator.transitionDuration
+        // height: px(this.indicator.styles.height),
+        // top: px(this.indicator.styles.top),
+        // backgroundColor: this.$monorail.settings.colors.baseHighColor,
+        // transitionDuration: this.indicator.styles.transitionDuration
       }
     }
   },
 
   watch: {
     collapsed () {
-      this.indicator.transitionDuration = 0 + 's'
-      requestAnimationFrame(() => this.activate(this.active))
-      requestAnimationFrame(() => this.indicator.transitionDuration = 150 + 'ms')
+      // requestAnimationFrame(() => this.activate(this.active))
     }
   },
 
   mounted () {
-    const firstItem = this.$children[0].$children[0]
-    firstItem.isActive = true
-    this.activate(firstItem)
+    // const firstItem = this.$children[0].$children[0]
+    // this.activate(firstItem)
   },
 
   methods: {
-    activate ($component) {
-      const fromGrandparent = $component.$el.offsetTop + $component.$parent.$el.offsetTop
-      const size = .7
-      this.active = $component
-      this.indicator.height = $component.$el.offsetHeight * size
-      this.indicator.top = fromGrandparent + ($component.$el.offsetHeight * (1 - size) / 2)
+    // onScroll (event) {
+    //   this.moveIndicator(false)
+    // },
+
+    moveIndicator () {
+      // if (!animate) this.indicator.styles.transitionDuration = '0s'
+
+      // this.indicator.styles.top = this.active.$el.offsetTop
+      //   - this.$refs.xxx.parentNode.scrollTop
+      //   + (this.active.$el.offsetHeight * (1 - this.indicator.size) / 2)
+
+      // if (!animate) {
+      //   requestAnimationFrame(() => {
+      //     this.indicator.styles.transitionDuration = this.indicator.transitionDuration + 'ms'
+      //   })
+      // }
+    },
+
+    activate () {
+      // this.active = $component
+      // if (this.$router && this.active.to) this.$router.push(this.active.to)
+      // this.indicator.styles.height = this.active.$el.offsetHeight * this.indicator.size
+      // this.moveIndicator()
     }
   },
 }
 </script>
 
 <docs>
-```vue
-<template>
-  <m-navigation v-model="items" style="background-color: #eee" />
-</template>
-
-<script>
-
-export default {
-  data () {
-    return {
-      items: [{
-        caption: "Fruit",
-        items: [{
-          icon: '🍒',
-          caption: "Cherries"
-        }, {
-          icon: '🍈',
-          caption: "Melons"
-        }, {
-          icon: '🍓',
-          caption: "Strawberries"
-        }, {
-          icon: '🍊',
-          caption: "Tangerines"
-        }, {
-          icon: '🥝',
-          caption: "Kiwis"
-        }, {
-          icon: '🍇',
-          caption: "Grapes"
-        }]
-      }, {
-        caption: "Veggies",
-        items: [{
-          icon: '🍅',
-          caption: "Tomatoes"
-        }, {
-          icon: '🍆',
-          caption: "Melons"
-        }, {
-          icon: '🥕',
-          caption: "Carrots"
-        }, {
-          icon: '🥒',
-          caption: "Cucumbers"
-        }]
-      }]
-    }
-  }
-}
-</script>
+```js
+<m-navigation v-model="items" style="background-color: #eee" />
 ```
 </docs>

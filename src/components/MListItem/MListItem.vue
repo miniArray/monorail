@@ -1,8 +1,7 @@
-<template>
-  <div class="m-list-item">
-    <div class="m-list-item__icon">{{ icon }}</div>
-    <div class="m-list-item__caption">{{ caption }}</div>
-  </div>
+<template lang="pug">
+include ./MListItem.mixin.pug
+
++MListItem
 </template>
 
 <style scoped lang="postcss">
@@ -10,17 +9,39 @@
   display: flex;
   width: 100%;
   align-items: center;
-  height: 48px;
+  height: var(--m-list-item-height);
+  position: relative;
 
   &__icon {
     flex: 1;
-    width: 48px;
-    max-width: 48px;
+    width: var(--m-list-item-height);
+    max-width: var(--m-list-item-height);
+    height: var(--m-list-item-icon);
+    max-height: var(--m-list-item-icon);
     text-align: center;
+
+    > * {
+      height: 100%
+    }
   }
 
   &__caption {
     flex: 2;
+    height: var(--m-list-item-icon);
+  }
+
+  &:hover {
+    background-color: var(--m-colors--navigation-item-hover);
+  }
+
+  &.active {
+    &::before {
+      content: '';
+      width: 5px;
+      position: absolute;
+      height: 100%;
+      background-color: var(--m-colors--base-high-color);
+    }
   }
 }
 </style>
@@ -45,17 +66,21 @@ export default {
       type: String,
       default: ''
     }
-  }
+  },
+
+  mounted () {
+
+  },
 }
 </script>
 
 <docs>
 ```js
 <div>
-  <m-list-item icon="🍒" caption="Cherries" />
-  <m-list-item icon="🍱" caption="Bento Box" />
-  <m-list-item icon="🥑" caption="Avocado" />
-  <m-list-item icon="🍰" caption="Cake" />
+  <m-list-item caption="Cherries">🍒</m-list-item>
+  <m-list-item caption="Bento Box">🍱</m-list-item>
+  <m-list-item caption="Avocado">🥑</m-list-item>
+  <m-list-item caption="Cake" />🍰</m-list-item>
 </div>
 ```
 </docs>

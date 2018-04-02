@@ -2,10 +2,18 @@
 extends ../MSplitView/MSplitView.pug
 
 block slotPane
-  div(style="background: #eee")
-    button.pull-button(:style='buttonStyle', @click='toggle')
-      span.default-icon-menu
-    m-navigation(v-model='value', :collapsed='collapsed')
+  div(style="height: 100%; display: flex; flex-direction: column;" class="no-select")
+    div(style="flex: 1;")
+      m-list-item(@click.native="toggle")
+        img(src="../../../assets/burger.svg" style="width: 16px")
+    div(style="flex: 1;" v-if="value.start")
+      m-navigation-item(v-for="(item, index) in value.start" :key="index") {{ item.icon }}
+
+    div(style="flex: 999; overflow: scroll;")
+      m-navigation(v-model='value.middle', :collapsed='collapsed')
+
+    div(style="flex: 1;" v-if="value.end")
+      m-navigation-item(v-for="(item, index) in value.end" :key="index") {{ item.icon }}
 
 block slotContent
   // @slot Content slot
@@ -15,10 +23,25 @@ block slotContent
 <script>
 import SplitView from '../MSplitView'
 import MNavigation from '../MNavigation'
+import Vuex from 'vuex'
+import Vue from 'vue'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    active: null
+  },
+  mutations: {
+    active (state, active) {
+      state.active = active
+    }
+  }
+})
 
 export default {
   name: 'MNavigationView',
-
+  store,
   components: {
     MNavigation
   },
@@ -27,9 +50,9 @@ export default {
 
   props: {
     value: {
-      type: Array,
+      type: Object,
       default () {
-        return []
+        return {}
       }
     },
 
@@ -40,15 +63,7 @@ export default {
   },
 
   computed: {
-    buttonStyle () {
-      return {
-        width: this.$monorail.settings.listItemIcon + 'px',
-        height: this.$monorail.settings.listItemIcon + 'px',
-        border: 'none',
-        outline: 'none',
-        background: 'none'
-      }
-    }
+
   },
 
   methods: {
@@ -69,7 +84,7 @@ export default {
       :collapsed.sync="collapsed"
       mode="compact-inline"
       v-model="items"
-      backgroundColor="#eee"
+      background-color="#eee"
       style="min-height: 100px">
         <m-content>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, aut eveniet tempora dolore modi officia distinctio rerum, deserunt aspernatur molestias possimus similique itaque ipsa ad, assumenda blanditiis labore hic maiores.

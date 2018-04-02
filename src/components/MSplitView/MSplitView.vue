@@ -7,6 +7,7 @@ extends ./MSplitView.pug
   display: grid;
   grid-template-rows: auto;
   grid-gap: 0px;
+  height: 100%;
 }
 
 .pane,
@@ -27,11 +28,14 @@ extends ./MSplitView.pug
   overflow: hidden;
   grid-column-start: 1;
   z-index: 2;
+  height: auto;
 }
 
 .content {
   grid-column: 2;
   z-index: 1;
+  height: auto;
+  overflow: scroll;
 }
 
 </style>
@@ -42,7 +46,6 @@ import { always, ifElse, equals, pipe, cond, px } from '../../utils/toolbelt'
 import tween from 'popmotion/animations/tween'
 import collapsable from '../../mixins/collapsable'
 
-const px = num => `${num}px`
 const splitViewOptions = [
   'compact-inline',
   'compact-overlay'
@@ -60,7 +63,7 @@ export default {
     collapsedWidth: {
       type: Number,
       default () {
-        return this.$monorail.settings.listItemIcon
+        return parseInt(this.$monorail.settings.listItemHeight)
       }
     },
 
@@ -80,7 +83,7 @@ export default {
     expandedWidth: {
       type: Number,
       default () {
-        return this.$monorail.settings.splitViewExpandedWidth
+        return parseInt(this.$monorail.settings.splitViewExpandedWidth)
       }
     }
   },

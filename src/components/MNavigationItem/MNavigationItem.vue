@@ -1,18 +1,10 @@
-<template>
-  <div
-    :class="[
-      'm-list-item',
-      { active: isActive }
-    ]"
-    :style="containerStyle"
-    @mousedown="down = true"
-    @mouseup="down = false"
-    @mouseover="hover = true"
-    @mouseleave="hover = false"
-    @click="activate">
-    <div class="m-list-item__icon">{{ icon }}</div>
-    <div class="m-list-item__caption">{{ caption }}</div>
-  </div>
+<template lang="pug">
+include ../MListItem/MListItem.mixin.pug
+
++MListItem()(
+  @click="activate"
+  :class="['m-list-item', { active: isActive }]"
+)
 </template>
 
 <script>
@@ -37,51 +29,27 @@ export default {
       type: Number,
       default: -1
     },
-  },
 
-  inject: {
-    _activate: {
-      from: 'activate',
-      default: () => {}
-    }
-  },
-
-  data () {
-    return {
-      down: false,
-      hover: false,
-      isActive: false
-    }
-  },
-
-  computed: {
-    containerStyle () {
-      const backgroundColor = this.down
-        ? this.$monorail.settings.colors.navigationItemActive
-        : this.hover
-          ? this.$monorail.settings.colors.navigationItemHover
-          : 'inherit'
-
-      return {
-        backgroundColor
+    to: {
+      type: [String, Object, Number],
+      default () {
+        return 0
       }
     }
   },
 
-  watch: {
-    active (val) {
-      this.isActive = val
-    },
-
-    activeUid (uid) {
-      this.isActive = this._uid === uid
+  computed: {
+    isActive () {
+      return this.$route.path === this.to
     }
   },
 
   methods: {
     activate () {
-      this.isActive = true
-      this._activate(this)
+      this.$store.commit('active', this._uid)
+
+      if (this.$router && this.to !== 0)
+        this.$router.push(this.to)
     }
   }
 }

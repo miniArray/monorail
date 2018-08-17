@@ -1,6 +1,6 @@
 {
   "name": "@miniarray/monorail",
-  "description": "Windows fluent UI components for vue.js",
+  "description": "Windows Fluent UI components for vue.js",
   "private": false,
   "version": "0.0.0-development",
   "homepage": "https://github.com/miniArray/monorail",
@@ -33,7 +33,10 @@
     "test": "run-s test:*",
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "release": "semantic-release",
-    "deploy": "node build/deploy.pre && push-dir --dir=dist/guide --branch=gh-pages --verbose --force; node build/deploy.post",
+    "deploy": "run-s deploy:*",
+    "deploy:pre": "node build/deploy.pre",
+    "deploy:push": "push-dir --dir=dist/guide --branch=gh-pages --verbose --force",
+    "deploy:post": "node build/deploy.post",
     "dist": "npm run build && npm run deploy",
     "component:create": "node build/template-component.js"
   },

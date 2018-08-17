@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./assets/logo.png" />
   <br>
-  Metro UI compent library for <a href="https://vuejs.org">Vue.js</a>
+  Windows Fluent UI components for <a href="https://vuejs.org">Vue.js</a>
 </p>
 
 <p><br></p>
